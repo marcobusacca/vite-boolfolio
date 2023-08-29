@@ -55,7 +55,7 @@ export default {
             </div>
             <div class="col-4 my-4" v-else v-for="project in projects" :key="project.id">
                 <div class="card h-100">
-                    <img class="card-img-top img-fluid" :src="`${baseUrl}/storage/${project.cover_image}`" :alt="`${project.title}-image`">
+                    <img class="card-img-top img-fluid" :src="`${baseUrl}/storage/${project.cover_image}`" :alt="`${project.title}-image`" v-if="project.cover_image">
                     <div class="card-body h-50">
                         <h5 class="card-title py-2" v-text="project.title"></h5>
                         <p class="card-text py-2" v-text="truncateText(project.description)"></p>
