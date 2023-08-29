@@ -15,18 +15,44 @@ export default {
         }
     },
     created() {
-        this.getProjects();
+        /*
+            VERSIONE 1 - SENZA PAGINAZIONE
+
+            this.getProjects();
+        */
+
+        this.getProjects(1);
     },
     methods: {
-        getProjects() {
+        /*
+            VERSIONE 1 - SENZA PAGINAZIONE
+            
+            getProjects() {
+    
+                this.loading = true;
+    
+                axios.get(`${this.baseUrl}/api/projects`).then((response) => {
+    
+                    if (response.data.success) {
+    
+                        this.projects = response.data.results;
+    
+                        this.loading = false;
+                    }
+                })
+            },
+        */
+        getProjects(num_page) {
 
             this.loading = true;
 
-            axios.get(`${this.baseUrl}/api/projects`).then((response) => {
+            axios.get(`${this.baseUrl}/api/projects`, { params: { page: num_page } }).then((response) => {
 
                 if (response.data.success) {
+                    this.projects = response.data.results.data;
 
-                    this.projects = response.data.results;
+                    this.currentPage = response.data.results.current_page;
+                    this.lastPage = response.data.results.last_page;
 
                     this.loading = false;
                 }
