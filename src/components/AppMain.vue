@@ -54,6 +54,7 @@ export default {
             axios.get(`${this.baseUrl}/api/projects`, { params: { page: num_page } }).then((response) => {
 
                 if (response.data.success) {
+
                     this.projects = response.data.results.data;
 
                     this.currentPage = response.data.results.current_page;
@@ -88,11 +89,26 @@ export default {
             </div>
             <!-- PROJECTS INFO CARD -->
             <div class="col-4 my-4" v-else v-for="project in projects" :key="project.id">
-                <div class="card h-100">
+                <div class="card projects-card h-100">
+                    <!-- PROJECTS COVER IMAGE -->
                     <img class="card-img-top img-fluid" :src="`${baseUrl}/storage/${project.cover_image}`" :alt="`${project.title}-image`" v-if="project.cover_image">
                     <div class="card-body h-50">
-                        <h5 class="card-title py-2" v-text="project.title"></h5>
-                        <p class="card-text py-2" v-text="truncateText(project.description)"></p>
+                        <!-- PROJECTS TITLE -->
+                        <h5 class="card-title" v-text="project.title"></h5>
+                        <!-- PROJECTS DESCRIPTION -->
+                        <p class="card-text" v-text="truncateText(project.description)"></p>
+                        <!-- PROJECTS TYPE -->
+                        <div class="py-4" v-if="project.type">
+                            <label class="fw-bold mx-1">Tipologia:</label>
+                            <span v-text="project.type.name"></span>
+                        </div>
+                        <!-- PROJECTS TECHNOLOGIES -->
+                        <div class="py-2" v-if="project.technologies">
+                            <label class="fw-bold mx-1">Tecnologie:</label>
+                            <ul>
+                                <li v-for="technology in project.technologies" v-text="technology.name" class="my-2"></li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="card-footer text-center">
                         <a href="#" class="btn btn-primary">Visualizza Progetto</a>
