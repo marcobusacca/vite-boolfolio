@@ -1,13 +1,16 @@
 <!-- JAVASCRIPT & VUE.JS -->
 <script>
 import axios from 'axios';
+
 export default {
     components: {
 
     },
     data() {
         return {
-
+            baseUrl: 'http://localhost:8000/api',
+            loading: true,
+            projects: [],
         }
     },
     created() {
