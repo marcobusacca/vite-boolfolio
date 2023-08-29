@@ -28,8 +28,6 @@ export default {
 
                     this.projects = response.data.results;
 
-                    console.log(response.data.results)
-
                     this.loading = false;
                 }
             })
