@@ -10,8 +10,13 @@ export default {
     data() {
         return {
             baseUrl: 'http://localhost:8000',
+
             loading: true,
+
             projects: [],
+
+            currentPage: 1,
+            lastPage: null,
         }
     },
     created() {
@@ -73,12 +78,15 @@ export default {
 <template lang="">
     <div class="container pb-5">
         <div class="row justify-content-center">
+            <!-- APP MAIN TITLE -->
             <div class="col-12 py-5">
                 <h1 class="text-center">vite-boolfolio</h1>
             </div>
+            <!-- APP LOADER -->
             <div class="col-12 d-flex justify-content-center align-items-center py-5" v-if="loading">
                 <AppLoader/>
             </div>
+            <!-- PROJECTS INFO CARD -->
             <div class="col-4 my-4" v-else v-for="project in projects" :key="project.id">
                 <div class="card h-100">
                     <img class="card-img-top img-fluid" :src="`${baseUrl}/storage/${project.cover_image}`" :alt="`${project.title}-image`" v-if="project.cover_image">
@@ -90,6 +98,19 @@ export default {
                         <a href="#" class="btn btn-primary">Visualizza Progetto</a>
                     </div>
                 </div>
+            </div>
+            <!-- PULSANTI GESTIONE PAGINAZIONE -->
+            <div class="col-12 my-5" v-if="!loading">
+                <nav class="d-flex justify-content-center">
+                    <ul class="pagination">
+                        <li :class="currentPage === 1 ? 'disabled' : ''">
+                            <button class="page-link" @click="getProjects(currentPage - 1)">Precedente</button>
+                        </li>
+                        <li :class="currentPage === lastPage ? 'disabled' : ''">
+                            <button class="page-link" @click="getProjects(currentPage + 1)">Successivo</button>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>
