@@ -34,6 +34,13 @@ export default {
                 }
             })
         },
+        truncateText(text) {
+            if (text.length > 100) {
+                return text.substr(0, 100) + '...';
+            }
+
+            return text;
+        }
     },
 }
 </script>
@@ -53,7 +60,7 @@ export default {
                     <img class="card-img-top img-fluid" :src="`${baseUrl}/storage/${project.cover_image}`" :alt="`${project.title}-image`">
                     <div class="card-body h-50">
                         <h5 class="card-title py-2" v-text="project.title"></h5>
-                        <p class="card-text py-2" v-text="project.description"></p>
+                        <p class="card-text py-2" v-text="truncateText(project.description)"></p>
                     </div>
                     <div class="card-footer text-center">
                         <a href="#" class="btn btn-primary">Visualizza Progetto</a>
