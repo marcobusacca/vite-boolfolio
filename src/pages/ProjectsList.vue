@@ -1,6 +1,9 @@
 <!-- JAVASCRIPT & VUE.JS -->
 <script>
+import { store } from '../store';
+
 import axios from 'axios';
+
 import AppLoader from '../components/AppLoader.vue';
 
 export default {
@@ -9,9 +12,7 @@ export default {
     },
     data() {
         return {
-            baseUrl: 'http://localhost:8000',
-
-            loading: true,
+            store,
 
             projects: [],
 
@@ -49,9 +50,9 @@ export default {
         */
         getProjects(num_page) {
 
-            this.loading = true;
+            this.store.loading = true;
 
-            axios.get(`${this.baseUrl}/api/projects`, { params: { page: num_page } }).then((response) => {
+            axios.get(`${this.store.baseUrl}/api/projects`, { params: { page: num_page } }).then((response) => {
 
                 if (response.data.success) {
 
@@ -60,7 +61,7 @@ export default {
                     this.currentPage = response.data.results.current_page;
                     this.lastPage = response.data.results.last_page;
 
-                    this.loading = false;
+                    this.store.loading = false;
                 }
             })
         },
@@ -84,7 +85,7 @@ export default {
                 <h1 class="text-center">Progetti</h1>
             </div>
             <!-- APP LOADER -->
-            <div class="col-12 d-flex justify-content-center align-items-center py-5" v-if="loading">
+            <div class="col-12 d-flex justify-content-center align-items-center py-5" v-if="store.loading">
                 <AppLoader/>
             </div>
             <!-- PROJECTS INFO CARD -->
@@ -116,7 +117,7 @@ export default {
                 </div>
             </div>
             <!-- PULSANTI GESTIONE PAGINAZIONE -->
-            <div class="col-12 my-5" v-if="!loading">
+            <div class="col-12 my-5" v-if="!store.loading">
                 <nav class="d-flex justify-content-center">
                     <ul class="pagination">
                         <li :class="currentPage === 1 ? 'disabled' : ''">
