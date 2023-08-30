@@ -92,7 +92,7 @@ export default {
             <div class="col-4 my-4" v-else v-for="project in projects" :key="project.id">
                 <div class="card projects-card h-100">
                     <!-- PROJECTS COVER IMAGE -->
-                    <img class="card-img-top img-fluid" :src="`${baseUrl}/storage/${project.cover_image}`" :alt="`${project.title}-image`" v-if="project.cover_image">
+                    <img class="card-img-top img-fluid" :src="`${store.baseUrl}/storage/${project.cover_image}`" :alt="`${project.title}-image`" v-if="project.cover_image">
                     <div class="card-body h-50">
                         <!-- PROJECTS TITLE -->
                         <h5 class="card-title" v-text="project.title"></h5>
