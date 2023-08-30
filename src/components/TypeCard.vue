@@ -9,7 +9,7 @@ export default {
 
 <!-- TEMPLATE HTML -->
 <template lang="">
-    <div class="card projects-card h-100">
+    <div class="card h-100">
         <!-- TYPE CARD BODY -->
         <div class="card-body text-center py-5 h-50">
             <!-- TYPE NAME -->

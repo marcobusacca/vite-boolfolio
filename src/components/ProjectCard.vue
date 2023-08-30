@@ -25,7 +25,7 @@ export default {
 
 <!-- TEMPLATE HTML -->
 <template lang="">
-    <div class="card projects-card h-100">
+    <div class="card h-100">
         <!-- PROJECTS CARD IMAGE -->
         <img class="card-img-top img-fluid" :src="`${store.baseUrl}/storage/${project.cover_image}`" :alt="`${project.title}-image`" v-if="project.cover_image">
         <!-- PROJECTS CARD BODY -->
