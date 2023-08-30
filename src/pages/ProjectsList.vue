@@ -79,9 +79,9 @@ export default {
 <template lang="">
     <div class="container pb-5">
         <div class="row justify-content-center">
-            <!-- APP MAIN TITLE -->
+            <!-- PROJECTS TITLE -->
             <div class="col-12 py-5">
-                <h1 class="text-center">vite-boolfolio</h1>
+                <h1 class="text-center">Progetti</h1>
             </div>
             <!-- APP LOADER -->
             <div class="col-12 d-flex justify-content-center align-items-center py-5" v-if="loading">
