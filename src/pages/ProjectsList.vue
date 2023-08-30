@@ -5,10 +5,12 @@ import { store } from '../store';
 import axios from 'axios';
 
 import AppLoader from '../components/AppLoader.vue';
+import ProjectCard from '../components/ProjectCard.vue';
 
 export default {
     components: {
         AppLoader,
+        ProjectCard,
     },
     data() {
         return {
