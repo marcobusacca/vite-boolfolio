@@ -19,7 +19,7 @@ export default {
         </div>
         <!-- TYPE CARD FOOTER -->
         <div class="card-footer text-center">
-            <a href="#" class="btn btn-primary">Visualizza Tipologia</a>
+            <router-link :to="{ name: 'single-type', params: { slug: type.slug } }" class="btn btn-primary">Visualizza Tipologia</router-link>
         </div>
     </div>
 </template>
