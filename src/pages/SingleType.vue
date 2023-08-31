@@ -59,11 +59,14 @@ export default {
                     <!-- TYPE CARD BODY -->
                     <div class="card-body text-center py-5 h-50">
                         <!-- TYPE PROJECTS -->
-                        <div class="row justify-content-center py-5" v-if="type.projects">
+                        <div class="row justify-content-center py-5" v-if="type.projects.length !== 0">
                             <h5 class="fw-bold mx-1">Progetti {{ type.name }}:</h5>
                             <div class="col-4 my-4" v-for="project in type.projects" :key="project.id">
                                 <ProjectCard :project="project" />
                             </div>
+                        </div>
+                        <div class="row justify-content-center py-5" v-else>
+                            <h5 class="fw-bold mx-1">Nessun Progetto {{ type.name }}</h5>
                         </div>
                     </div>
                 </div>
