@@ -49,7 +49,7 @@ export default {
         </div>
         <!-- PROJECTS CARD FOOTER -->
         <div class="card-footer text-center">
-            <a href="#" class="btn btn-primary">Visualizza Progetto</a>
+            <router-link :to="{ name: 'single-project', params: { slug: project.slug } }" class="btn btn-primary">Visualizza Progetto</router-link>
         </div>
     </div>
 </template>
