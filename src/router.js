@@ -9,11 +9,14 @@ import ProjectsList from './pages/ProjectsList.vue';
 import SingleProject from './pages/SingleProject.vue';
 
 import TypesList from './pages/TypesList.vue';
+import SingleType from './pages/SingleType.vue';
 
 import TechnologiesList from './pages/TechnologiesList.vue';
+import SingleTechnology from './pages/SingleTechnology.vue';
 
 import Contacts from './pages/Contacts.vue';
 
+import NotFound from './pages/NotFound.vue';
 
 // CREIAMO IL ROUTER CON LE SUE ROTTE
 const router = createRouter({
@@ -47,14 +50,33 @@ const router = createRouter({
             component: TypesList,
         },
         {
+            path: '/types/:slug',
+            name: 'single-type',
+            component: SingleType,
+        },
+        {
             path: '/technologies',
             name: 'technologies-list',
             component: TechnologiesList,
         },
         {
+            path: '/technologies/:slug',
+            name: 'single-technology',
+            component: SingleTechnology,
+        },
+        {
             path: '/contacts',
             name: 'contacts',
             component: Contacts,
+        },
+        {
+            path: '/:catchAll(.*)',
+            redirect: '/pagina-non-trovata',
+        },
+        {
+            path: '/pagina-non-trovata',
+            name: 'not-found',
+            component: NotFound,
         },
     ]
 
