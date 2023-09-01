@@ -1,7 +1,11 @@
 <!-- JAVASCRIPT & VUE.JS -->
 <script>
-export default {
+import ContactForm from '../components/ContactForm.vue';
 
+export default {
+    components: {
+        ContactForm,
+    }
 }
 </script>
 
@@ -14,6 +18,7 @@ export default {
                 <h1 class="text-center">About Us</h1>
             </div>
         </div>
+        <ContactForm/>
     </div>
 </template>
 
