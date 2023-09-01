@@ -16,6 +16,8 @@ import SingleTechnology from './pages/SingleTechnology.vue';
 
 import Contacts from './pages/Contacts.vue';
 
+import ThankYou from './pages/ThankYou.vue';
+
 import NotFound from './pages/NotFound.vue';
 
 // CREIAMO IL ROUTER CON LE SUE ROTTE
@@ -68,6 +70,11 @@ const router = createRouter({
             path: '/contacts',
             name: 'contacts',
             component: Contacts,
+        },
+        {
+            path: '/thank-you',
+            name: 'thank-you',
+            component: ThankYou,
         },
         {
             path: '/:catchAll(.*)',
