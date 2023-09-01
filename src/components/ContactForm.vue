@@ -10,7 +10,13 @@ export default {
     },
     data() {
         return {
+            store,
 
+            name: '',
+            email: '',
+            content: '',
+
+            errors: {},
         }
     },
     methods: {
