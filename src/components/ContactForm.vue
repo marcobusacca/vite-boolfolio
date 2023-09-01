@@ -12,6 +12,8 @@ export default {
         return {
             store,
 
+            loading: false,
+
             name: '',
             email: '',
             content: '',
@@ -21,6 +23,8 @@ export default {
     },
     methods: {
         sendForm() {
+
+            this.loading = true;
 
             // SALVO I DATI DI INPUT DELL'UTENTE
             const form_data = {
@@ -44,12 +48,16 @@ export default {
                     this.email = '';
                     this.content = '';
 
+                    this.loading = false;
+
                     this.$router.push({ name: 'thank-you' });
 
                 } else {
 
                     // SALVO I MESSAGGI DI ERRORE NELL'OGGETTO ERRORS
                     this.errors = response.data.errors;
+
+                    this.loading = false;
                 }
             });
         }
@@ -99,7 +107,7 @@ export default {
                     <!-- FORM SUBMIT -->
                     <div class="col-12 text-center my-3">
                         <!-- SUBMIT BUTTON -->
-                        <button type="submit" class="btn btn-success">Invia</button>
+                        <button type="submit" class="btn btn-success" :disabled="loading">{{ loading ? 'Invio in corso' : 'Invia' }}</button>
                     </div>
                 </form>
             </div>
