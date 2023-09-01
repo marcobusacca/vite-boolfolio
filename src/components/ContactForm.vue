@@ -59,6 +59,52 @@ export default {
 
 <!-- TEMPLATE HTML -->
 <template lang="">
+    <!-- CONTACT FORM CARD -->
+    <div class="col-12 card my-5">
+        <div class="row p-5">
+            <!-- CONTACT FORM TITLE -->
+            <div class="col-12">
+                <h2 class="text-center">Contattaci</h2>
+            </div>
+            <!-- CONTACT FORM LAYOUT -->
+            <div class="col-12">
+                <form @submit.prevent="sendForm()" class="row">
+                    <!-- NAME FORM GROUP -->
+                    <div class="col-12 col-md-6 my-3">
+                        <!-- NAME LABEL -->
+                        <label class="control-label">Nome e Cognome</label>
+                        <!-- NAME INPUT -->
+                        <input type="text" name="name" id="name" placeholder="Inserisci il tuo nome ed il tuo cognome" v-model="name" class="form-control" :class="errors.name ? 'is-invalid' : ''" required>
+                        <!-- NAME ERRORS -->
+                        <span v-for="(error, index) in errors.name" :key="index" class="text-danger">{{ error }}</span>
+                    </div>
+                    <!-- EMAIL FORM GROUP -->
+                    <div class="col-12 col-md-6 my-3">
+                        <!-- EMAIL LABEL -->
+                        <label class="control-label">Email</label>
+                        <!-- EMAIL INPUT -->
+                        <input type="mail" name="email" id="email" placeholder="Inserisci la tua email" v-model="email" class="form-control" :class="errors.email ? 'is-invalid' : ''" required>
+                        <!-- EMAIL ERRORS -->
+                        <span v-for="(error, index) in errors.email" :key="index" class="text-danger">{{ error }}</span>
+                    </div>
+                    <!-- CONTENT FORM GROUP -->
+                    <div class="col-12 my-3">
+                        <!-- CONTENT LABEL -->
+                        <label class="control-label">Contenuto</label>
+                        <!-- CONTENT TEXT AREA -->
+                        <textarea name="content" id="content" placeholder="Inserisci il messaggio" v-model="content" class="form-control" :class="errors.content ? 'is-invalid' : ''" cols="30" rows="10" required></textarea>
+                        <!-- CONTENT ERRORS -->
+                        <span v-for="(error, index) in errors.content" :key="index" class="text-danger">{{ error }}</span>
+                    </div>
+                    <!-- FORM SUBMIT -->
+                    <div class="col-12 text-center my-3">
+                        <!-- SUBMIT BUTTON -->
+                        <button type="submit" class="btn btn-success">Invia</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </template>
 
 <!-- STYLE SCSS -->
